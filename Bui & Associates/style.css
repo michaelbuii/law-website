@@ -1,0 +1,484 @@
+/* normalize */
+
+*,
+*::before,
+*:after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Site Wide styles */
+:root {
+  font-size: 62.5%;
+
+  --primary-color: #16613e;
+  --primary-color-m: #115234;
+  --secondary-color:#242424;
+  --secondary-color-m: rgba(36, 36, 36, 0.95);
+  --accent-color: #31a344;
+}
+
+body {
+  font-family: 'Mulish', sans-serif;
+  line-height: 1.8;
+  display: flex;
+}
+
+li {
+  list-style: none;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+  color: white;
+  font-size: 2rem;
+}
+
+/* Side Nav */
+aside#side-nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  height: 100vh;
+}
+
+div.side-nav__container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--primary-color);
+}
+
+div.side-nav-logo img{
+  width: calc(4vw + 4vh);
+  object-fit: cover;
+}
+
+ul.side-nav-social {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+ul.side-nav-social a i{
+  color: white;
+  font-size: calc(1rem + 0.66667vw);
+  transition: 500ms;
+}
+
+ul.side-nav-social a i:hover,
+ul.side-nav-social a i:active {
+  color: var(--accent-color);
+}
+
+main {
+  flex: 1;
+}
+
+header#header {
+  background-color: var(--secondary-color);
+  height: calc(4vw + 4vh);
+  z-index: 2;
+}
+
+nav#main-nav{
+  height: 100%;
+}
+
+ul.nav-links {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+
+ul.nav-links li {
+  padding-right: 3vw;
+}
+
+ul.nav-links li a {
+  position: relative;
+  padding: 0.25rem 0.6rem;
+  font-size: calc(0.5rem + 0.66667vw);
+}
+
+ul.nav-links li a:link::before,
+ul.nav-links li a:visited::before, 
+ul.nav-links li a:link::after, 
+ul.nav-links li a:visited::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 0.2rem;
+  background-color: white;
+
+  transform: scaleX(0);
+  transition: transform 0.4s cubic-bezier(1,0,0,1)
+}
+
+ul.nav-links li a:link::before,
+ul.nav-links li a:visited::before {
+  top: 0;
+  transform-origin: left;
+}
+
+ul.nav-links li a:link::after, 
+ul.nav-links li a:visited::after {
+  bottom: 0;
+  transform-origin: right;
+}
+
+ul.nav-links li a:hover::before,
+ul.nav-links li a:active::before, 
+ul.nav-links li a:hover::after, 
+ul.nav-links li a:active::after {
+  transform: scaleX(1);
+}
+
+/* Hero Section */
+section#hero{
+  height: 100vh;
+  background-image: url('img/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+div.hero-container {
+  background-color: var(--secondary-color-m);
+  padding: calc(1rem + 2vw);
+  height: calc(5rem + 15vmax);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: calc(1rem + 45vw);
+  /* animate */
+  animation: hero 2s;
+}
+
+@keyframes hero {
+  0% {
+    transform: translateY(10rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+h1.hero-title{
+  font-size: calc(1rem + 2vw);
+  font-family: 'Roboto Slab', serif;
+  color: var(--primary-color);
+}
+
+p.hero-description{
+  font-size: calc(0.33rem + 1vw);
+  color: white;
+}
+
+/* Practices Section */
+section#practices{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  justify-content: center;
+}
+h1.section-title {
+  font-family: 'Roboto-Sans', serif;
+  font-size: calc(1rem + 4vh);
+  margin-top: 0.5em;
+  text-align: center;
+}
+
+div.practices-container{
+  margin-top: 1em;
+  display: flex;
+  gap: 5rem;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  flex-grow: 1;
+}
+
+div.practices-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+div.practice-logo i {
+  font-size: calc(1rem + 2.5vh);
+}
+
+h2.practice-title {
+  font-size: calc(1rem + 2.5vh);
+  margin-bottom: 0.5rem;
+}
+
+p.practice-description {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+a.practice-link {
+  color: var(--accent-color);
+  font-size: 1.6rem;
+  font-weight: 500;
+  border: 1px solid var(--accent-color);
+  padding: 0.3rem;
+  margin-bottom: 0.5rem;
+  transition: 0.5s;
+}
+
+a.practice-link:active,
+a.practice-link:hover {
+  background-color: var(--accent-color);
+  color: white;
+  border: var(--secondary-color);
+}
+
+/* Meet Team Section */
+
+section#meet-team{
+  display: flex;
+  flex-direction: column;
+}
+div.team-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+div.lawyer-img{
+  padding: 3rem;
+  flex-basis: 65%;
+}
+
+div.about-lawyer {
+  padding: 3rem;
+  flex-basis: 35%;
+}
+
+h2.lawyer-title{
+  font-family: 'Roboto-Slab', serif;
+  font-size: 4rem;
+  color: var(--primary-color);
+  text-transform: uppercase;
+
+  position: relative;
+}
+
+h2.lawyer-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 0.25rem;
+  width: 15%;
+  background-color: var(--accent-color);
+}
+
+p.lawyer-description{
+  font-size: 2rem;
+}
+
+div.lawyer-img img {
+  width: 100%;
+}
+
+p.lawyer-description,
+h2.lawyer-title{
+  margin-bottom: 2rem;
+  letter-spacing: 0.2rem;
+}
+
+a.about-lawyer-link:link,
+a.about-lawyer-link:visited {
+  color: var(--primary-color);
+  padding: 1rem 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+
+  position: relative;
+  z-index: 1;
+}
+
+a.about-lawyer-link:link::after,
+a.about-lawyer-link:visited::after{
+  content:'';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--accent-color);
+  opacity: 0.8;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.45s cubic-bezier(0.645, 0.045, 0.355, 1);
+  z-index: -1;
+}
+
+a.about-lawyer-link:hover::after,
+a.about-lawyer-link:active::after{
+  transform: scaleY(1);
+  transform-origin: top;
+}
+
+
+
+.animate{
+  animation: slide-up 1.5s;
+}
+
+@keyframes slide-up{
+  0% {
+    transform: translateY(5rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
+@media screen and (max-width:900px){
+  div.hero-container {
+    width: calc(1rem + 75vw);
+    height: calc(3rem + 20vmax);
+  }
+
+  h1.hero-title{
+    font-size: calc(1rem + 2.5vw);
+  }
+  
+  p.hero-description{
+    font-size: calc(0.5rem + 2vw);
+    color: white;
+  }
+
+  section#hero{
+    align-items: flex-end;
+    background-position: 50%;
+  }
+
+  div.side-nav-logo img{
+    width: calc(5vw + 5vh);
+  }
+
+  header#header {
+    height: calc(5vw + 5vh);
+  }
+
+  #meet-team .team-container:first-of-type {
+    flex-wrap: wrap-reverse;
+  }
+  
+  div.about-lawyer {
+    flex-basis: 75%;
+  }
+
+}
+/* Responsiveness for Nav */
+@media screen and (max-width: 610px) {
+  header#header{
+    position: absolute;
+  }
+
+  nav#main-nav{
+    width: 30rem;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: -30rem;
+    background-color: var(--secondary-color);
+    text-align: center;
+  }
+
+  .clicked{
+    left: 55%;
+  }
+
+  .main-nav-hamburger {
+    width: 5rem;
+    height: 5rem;
+    position: fixed;
+    top: 2rem;
+    right: 3rem;
+    cursor: pointer;
+    background-color: var(--secondary-color);
+    padding: 1rem;
+    border-radius: 50%;
+    /* for the lines */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .line {
+    width: 100%;
+    height: 0.3rem;
+    background-color: white;
+    border-radius: 0.2rem;
+    transition: all 0.4s ease-in-out;
+  }
+
+  ul.nav-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  ul.nav-links li {
+    margin-bottom: 4vh;
+    margin-left: 6vw;
+    opacity: 0;
+  }
+
+  .clicked .line-1 {
+    transform: rotateZ(-405deg) translate(-0.8rem, 0.6rem);
+  }
+  .clicked .line-2 {
+    opacity: 0;
+  }
+  .clicked .line-3 {
+    transform:rotateZ(405deg) translate(-0.8rem, -0.6rem);
+  }
+  ul.nav-links li:nth-child(1){
+    transition: all 0.5s ease-in-out 0.2s;
+  }
+  ul.nav-links li:nth-child(2){
+    transition: all 0.5s ease-in-out 0.4s;
+  }
+  ul.nav-links li:nth-child(3){
+    transition: all 0.5s ease-in-out 0.6s;
+  }
+  ul.nav-links li:nth-child(4){
+    transition: all 0.5s ease-in-out 0.8s;
+  }
+  ul.nav-links li:nth-child(5){
+    transition: all 0.5s ease-in-out 1s;
+  }
+  ul.nav-links li.fade {
+    opacity: 1;
+  }
+}
